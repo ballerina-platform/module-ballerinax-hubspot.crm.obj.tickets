@@ -1,8 +1,8 @@
 # Ballerina HubSpot CRM Object Tickets connector
 
-[![Build](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/actions/workflows/ci.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.object.tickets.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%hubspot.crm.object.tickets)
+[![Build](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/actions/workflows/ci.yml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/commits/master)
+[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.obj.tickets.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fhubspot.crm.obj.tickets)
 
 ## Overview
 
@@ -22,20 +22,20 @@ App Developer Accounts, allow you to create developer test accounts to test apps
 
 1. Go to "Test Account section" from the left sidebar.
 
-    ![Test accounts](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/test_acc_img1.png)
+    ![Test accounts](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/test_acc_img1.png)
 
 2. Click "Create developer test account".
 
-   ![Developer Test Accounts](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/test_acc_img2.png)
+   ![Developer Test Accounts](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/test_acc_img2.png)
 
 3. In the next dialogue box, give a name to your test account and click "Create".
 
-   ![Hubspot developer account name](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/test_acc_img3.png)
+   ![HubSpot developer account name](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/test_acc_img3.png)
 
 ### Step 2: Create a HubSpot App under your account
 
 1. In your developer account, navigate to the "Apps" section. Click on "Create App".
-   ![Hubspot App Creation](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/app_img1.png)
+   ![HubSpot App Creation](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/app_img1.png)
 
 2. Provide the necessary details, including the app name and description.
 
@@ -43,24 +43,24 @@ App Developer Accounts, allow you to create developer test accounts to test apps
 
 1. Move to the Auth Tab.
 
-   ![Auth tab](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/auth.png)
+   ![Auth tab](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/auth.png)
 
 2. In the "Scopes" section, add the following scopes for your app using the "Add new scope" button.
 
    * `tickets`
    * `oauth`
 
-   ![Scope Selection](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/scope_select.png)
+   ![Scope Selection](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/scope_select.png)
 
 3. Add your Redirect URI in the relevant section. You can use `localhost` addresses for local development purposes. Then Click "Create App".
 
-   ![Redirect URI](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/redirect_url.png)
+   ![Redirect URI](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/redirect_url.png)
 
 ### Step 4: Get your Client ID and Client Secret
 
 - Navigate to the "Auth" tab. Make sure to save the provided Client ID and Client Secret.
 
-   ![Credentials](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/main/docs/setup/resources/credentials.png)
+   ![Credentials](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/main/docs/setup/resources/credentials.png)
 
 ### Step 5: Setup Authentication Flow
 
@@ -174,8 +174,8 @@ public function main() returns error? {
 
 The `HubSpot CRM Object Tickets` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/tree/main/examples), covering the following use cases:
 
-   1. [Ticket Management System](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/tree/main/examples/ticket-management-system) - Integrate HubSpot with multiple customer support channels to streamline ticket management.
-   2. [Weekly Tickets Report Generation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.tickets/tree/main/examples/weekly-ticket-reports) - Analyze detailed summaries of customer tickets in each week for better support
+   1. [Ticket Management System](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/tree/main/examples/ticket-management-system) - Integrate HubSpot with multiple customer support channels to streamline ticket management.
+   2. [Weekly Tickets Report Generation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.tickets/tree/main/examples/weekly-ticket-reports) - Analyze detailed summaries of customer tickets in each week for better support
 
 ## Build from the source
 
