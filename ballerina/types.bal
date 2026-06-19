@@ -19,65 +19,65 @@
 
 import ballerina/http;
 
-# Standard error response structure returned by the API.
+# Standard error response structure returned by the API
 public type StandardError record {
-    # Optional sub-category providing additional error classification.
+    # Optional sub-category providing additional error classification
     record {} subCategory?;
-    # Contextual metadata map with string array values for the error.
+    # Contextual metadata map with string array values for the error
     record {|string[]...;|} context;
-    # Map of relevant links associated with the error response.
+    # Map of relevant links associated with the error response
     record {|string...;|} links;
-    # Unique identifier for the error instance.
+    # Unique identifier for the error instance
     string id?;
-    # High-level category classifying the type of error.
+    # High-level category classifying the type of error
     string category;
-    # Human-readable message describing the error.
+    # Human-readable message describing the error
     string message;
-    # List of detailed error entries associated with this response.
+    # List of detailed error entries associated with this response
     ErrorDetail[] errors;
-    # HTTP status code or status label for the error.
+    # HTTP status code or status label for the error
     string status;
 };
 
-# Paginated collection of associated object IDs.
+# Paginated collection of associated object IDs
 public type CollectionResponseAssociatedId record {
-    # Pagination container providing cursors for navigating to the next or previous result page.
+    # Pagination container providing cursors for navigating to the next or previous result page
     Paging paging?;
-    # Array of associated object IDs returned in this page.
+    # Array of associated object IDs returned in this page
     AssociatedId[] results;
 };
 
-# Defines association targets and types for a given object.
+# Defines association targets and types for a given object
 public type PublicAssociationsForObject record {
-    # List of association type specifications for the relationship.
+    # List of association type specifications for the relationship
     AssociationSpec[] types?;
-    # Represents a public object identifier containing a unique ID string.
+    # Represents a public object identifier containing a unique ID string
     PublicObjectId to?;
 };
 
-# Batch operation response containing results and execution timestamps.
+# Batch operation response containing results and execution timestamps
 public type BatchResponseSimplePublicObject record {
-    # Datetime when the batch operation completed.
+    # Datetime when the batch operation completed
     string completedAt;
-    # Datetime when the batch operation was requested.
+    # Datetime when the batch operation was requested
     string requestedAt?;
-    # Datetime when the batch operation began processing.
+    # Datetime when the batch operation began processing
     string startedAt;
-    # Map of supplementary links related to the batch response.
+    # Map of supplementary links related to the batch response
     record {|string...;|} links?;
-    # Array of ticket objects returned by the batch operation.
+    # Array of ticket objects returned by the batch operation
     SimplePublicObject[] results;
-    # Current processing status of the batch request.
+    # Current processing status of the batch request
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# A group of filters combined to narrow search results.
+# A group of filters combined to narrow search results
 public type FilterGroup record {
-    # Array of filter conditions applied within the group.
+    # Array of filter conditions applied within the group
     Filter[] filters;
 };
 
-# Detailed information about a specific error encountered in a request.
+# Detailed information about a specific error encountered in a request
 public type ErrorDetail record {
     # A specific category that contains more specific detail about the error
     string subCategory?;
@@ -97,85 +97,85 @@ public type PatchCrmV3ObjectsTicketsTicketIdUpdateQueries record {
     string idProperty?;
 };
 
-# Pagination object providing a cursor for forward navigation.
+# Pagination object providing a cursor for forward navigation
 public type ForwardPaging record {
-    # Pagination cursor details for retrieving the next page of results.
+    # Pagination cursor details for retrieving the next page of results
     NextPage next?;
 };
 
-# A minimal object containing a unique identifier for a public object.
+# A minimal object containing a unique identifier for a public object
 public type SimplePublicObjectId record {
-    # The unique identifier of the object.
+    # The unique identifier of the object
     string id;
 };
 
-# Batch upsert response containing results, status, timestamps, and any errors encountered.
+# Batch upsert response containing results, status, timestamps, and any errors encountered
 public type BatchResponseSimplePublicUpsertObjectWithErrors record {
-    # Timestamp when the batch operation completed.
+    # Timestamp when the batch operation completed
     string completedAt;
-    # Total number of errors encountered during the batch operation.
+    # Total number of errors encountered during the batch operation
     int:Signed32 numErrors?;
-    # Timestamp when the batch operation was requested.
+    # Timestamp when the batch operation was requested
     string requestedAt?;
-    # Timestamp when the batch operation began processing.
+    # Timestamp when the batch operation began processing
     string startedAt;
-    # Map of relevant links associated with the batch response.
+    # Map of relevant links associated with the batch response
     record {|string...;|} links?;
-    # Array of upserted ticket objects returned by the batch operation.
+    # Array of upserted ticket objects returned by the batch operation
     SimplePublicUpsertObject[] results;
-    # Array of errors encountered for individual records in the batch.
+    # Array of errors encountered for individual records in the batch
     StandardError[] errors?;
-    # Current processing status of the batch upsert request.
+    # Current processing status of the batch upsert request
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# Input schema for reading a batch of tickets by ID with specified properties.
+# Input schema for reading a batch of tickets by ID with specified properties
 public type BatchReadInputSimplePublicObjectId record {
-    # List of properties to return along with their historical values.
+    # List of properties to return along with their historical values
     string[] propertiesWithHistory;
-    # The property name used as the identifier for batch lookup.
+    # The property name used as the identifier for batch lookup
     string idProperty?;
-    # List of object IDs to retrieve in the batch read request.
+    # List of object IDs to retrieve in the batch read request
     SimplePublicObjectId[] inputs;
-    # List of property names to include in the response.
+    # List of property names to include in the response
     string[] properties;
 };
 
-# Response object containing the results and status of a batch upsert operation on tickets.
+# Response object containing the results and status of a batch upsert operation on tickets
 public type BatchResponseSimplePublicUpsertObject record {
-    # Datetime when the batch operation completed.
+    # Datetime when the batch operation completed
     string completedAt;
-    # Datetime when the batch operation was requested.
+    # Datetime when the batch operation was requested
     string requestedAt?;
-    # Datetime when the batch operation began processing.
+    # Datetime when the batch operation began processing
     string startedAt;
-    # Map of relevant hyperlinks associated with the batch response.
+    # Map of relevant hyperlinks associated with the batch response
     record {|string...;|} links?;
-    # List of upserted ticket objects returned by the batch operation.
+    # List of upserted ticket objects returned by the batch operation
     SimplePublicUpsertObject[] results;
-    # Current processing status of the batch operation.
+    # Current processing status of the batch operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# A property value paired with its source metadata and the timestamp of the last update.
+# A property value paired with its source metadata and the timestamp of the last update
 public type ValueWithTimestamp record {
-    # Identifier of the source that set this property value.
+    # Identifier of the source that set this property value
     string sourceId?;
-    # The type of source that originated this property value.
+    # The type of source that originated this property value
     string sourceType;
-    # Human-readable label describing the value's source.
+    # Human-readable label describing the value's source
     string sourceLabel?;
-    # ID of the user who last updated this property value.
+    # ID of the user who last updated this property value
     int:Signed32 updatedByUserId?;
-    # The property value at the recorded timestamp.
+    # The property value at the recorded timestamp
     string value;
-    # Datetime when this property value was recorded.
+    # Datetime when this property value was recorded
     string timestamp;
 };
 
-# Input schema containing a list of object IDs for a batch operation on tickets.
+# Input schema containing a list of object IDs for a batch operation on tickets
 public type BatchInputSimplePublicObjectId record {
-    # List of ticket object IDs to process in the batch operation.
+    # List of ticket object IDs to process in the batch operation
     SimplePublicObjectId[] inputs;
 };
 
@@ -186,37 +186,37 @@ public type OAuth2RefreshTokenGrantConfig record {|
     string refreshUrl = "https://api.hubapi.com/oauth/v1/token";
 |};
 
-# Input schema containing a list of ticket objects to create or update in a batch upsert operation.
+# Input schema containing a list of ticket objects to create or update in a batch upsert operation
 public type BatchInputSimplePublicObjectBatchInputUpsert record {
-    # Array of ticket upsert input objects to process in batch.
+    # Array of ticket upsert input objects to process in batch
     SimplePublicObjectBatchInputUpsert[] inputs;
 };
 
-# A paginated collection of ticket objects with a total count and forward paging cursor.
+# A paginated collection of ticket objects with a total count and forward paging cursor
 public type CollectionResponseWithTotalSimplePublicObjectForwardPaging record {
-    # Total number of tickets matching the request.
+    # Total number of tickets matching the request
     int:Signed32 total;
-    # Pagination object providing a cursor for forward navigation.
+    # Pagination object providing a cursor for forward navigation
     ForwardPaging paging?;
-    # Array of ticket objects returned in the current page.
+    # Array of ticket objects returned in the current page
     SimplePublicObject[] results;
 };
 
-# Represents a single ticket object with its properties, metadata, and optional history.
+# Represents a single ticket object with its properties, metadata, and optional history
 public type SimplePublicObject record {
-    # Timestamp when the ticket was created.
+    # Timestamp when the ticket was created
     string createdAt;
-    # Indicates whether the ticket is archived.
+    # Indicates whether the ticket is archived
     boolean archived?;
-    # Timestamp when the ticket was archived.
+    # Timestamp when the ticket was archived
     string archivedAt?;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # Unique identifier of the ticket.
+    # Unique identifier of the ticket
     string id;
-    # Map of ticket property names to their current values.
+    # Map of ticket property names to their current values
     record {|string?...;|} properties;
-    # Timestamp when the ticket was last updated.
+    # Timestamp when the ticket was last updated
     string updatedAt;
 };
 
@@ -236,10 +236,10 @@ public type GetCrmV3ObjectsTicketsGetPageQueries record {
     string[] properties?;
 };
 
-# Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
+# Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint
 @display {label: "Connection Config"}
 public type ConnectionConfig record {|
-    # Provides Auth configurations needed when communicating with a remote HTTP endpoint.
+    # Provides Auth configurations needed when communicating with a remote HTTP endpoint
     http:BearerTokenConfig|OAuth2RefreshTokenGrantConfig|ApiKeysConfig auth;
     # The HTTP version understood by the client
     http:HttpVersion httpVersion = http:HTTP_2_0;
@@ -276,69 +276,69 @@ public type ConnectionConfig record {|
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
     # Enables relaxed data binding on the client side. When enabled, `nil` values are treated as optional, 
-    # and absent fields are handled as `nilable` types. Enabled by default.
+    # and absent fields are handled as `nilable` types. Enabled by default
     boolean laxDataBinding = true;
 |};
 
-# Represents a public object identifier containing a unique ID string.
+# Represents a public object identifier containing a unique ID string
 public type PublicObjectId record {
-    # Unique identifier of the public object.
+    # Unique identifier of the public object
     string id?;
 };
 
-# Pagination container providing cursors for navigating to the next or previous result page.
+# Pagination container providing cursors for navigating to the next or previous result page
 public type Paging record {
-    # Pagination cursor details for retrieving the next page of results.
+    # Pagination cursor details for retrieving the next page of results
     NextPage next?;
-    # Pagination cursor and link referencing the previous page of results.
+    # Pagination cursor and link referencing the previous page of results
     PreviousPage prev?;
 };
 
-# Request payload for searching tickets with filters, sorting, pagination, and property selection.
+# Request payload for searching tickets with filters, sorting, pagination, and property selection
 public type PublicObjectSearchRequest record {
-    # Full-text search query string to match against ticket properties.
+    # Full-text search query string to match against ticket properties
     string query?;
-    # Maximum number of results to return per page.
+    # Maximum number of results to return per page
     int:Signed32 'limit?;
-    # Cursor token for retrieving the next page of results.
+    # Cursor token for retrieving the next page of results
     string after?;
-    # List of property names to sort results by.
+    # List of property names to sort results by
     string[] sorts?;
-    # List of property names to include in the response.
+    # List of property names to include in the response
     string[] properties?;
-    # Groups of filters used to narrow search results.
+    # Groups of filters used to narrow search results
     FilterGroup[] filterGroups?;
 };
 
-# Input object for upserting a ticket, containing an identifier and its associated properties.
+# Input object for upserting a ticket, containing an identifier and its associated properties
 public type SimplePublicObjectBatchInputUpsert record {
-    # Name of the property used as the unique identifier.
+    # Name of the property used as the unique identifier
     string idProperty?;
-    # Trace identifier for tracking the write operation.
+    # Trace identifier for tracking the write operation
     string objectWriteTraceId?;
-    # Unique identifier of the ticket to upsert.
+    # Unique identifier of the ticket to upsert
     string id;
-    # Map of property names to values for the ticket.
+    # Map of property names to values for the ticket
     record {|string...;|} properties;
 };
 
-# Batch operation response for tickets, including results, status, timestamps, and any errors encountered.
+# Batch operation response for tickets, including results, status, timestamps, and any errors encountered
 public type BatchResponseSimplePublicObjectWithErrors record {
-    # Timestamp when the batch operation completed.
+    # Timestamp when the batch operation completed
     string completedAt;
-    # Total number of errors encountered in the batch.
+    # Total number of errors encountered in the batch
     int:Signed32 numErrors?;
-    # Timestamp when the batch operation was requested.
+    # Timestamp when the batch operation was requested
     string requestedAt?;
-    # Timestamp when the batch operation started processing.
+    # Timestamp when the batch operation started processing
     string startedAt;
-    # Map of relevant link names to their associated URIs.
+    # Map of relevant link names to their associated URIs
     record {|string...;|} links?;
-    # List of successfully processed ticket objects.
+    # List of successfully processed ticket objects
     SimplePublicObject[] results;
-    # List of errors encountered during batch processing.
+    # List of errors encountered during batch processing
     StandardError[] errors?;
-    # Current status of the batch operation.
+    # Current status of the batch operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
@@ -356,121 +356,121 @@ public type GetCrmV3ObjectsTicketsTicketIdGetByIdQueries record {
     string[] properties?;
 };
 
-# Input payload for creating or updating a ticket object with properties and associations.
+# Input payload for creating or updating a ticket object with properties and associations
 public type SimplePublicObjectInput record {
-    # Trace identifier for tracking the write operation.
+    # Trace identifier for tracking the write operation
     string objectWriteTraceId?;
-    # Key-value map of ticket property names and their string values.
+    # Key-value map of ticket property names and their string values
     record {|string...;|} properties;
 };
 
-# Paginated collection of ticket objects including their associated records.
+# Paginated collection of ticket objects including their associated records
 public type CollectionResponseSimplePublicObjectWithAssociationsForwardPaging record {
-    # Pagination object providing a cursor for forward navigation.
+    # Pagination object providing a cursor for forward navigation
     ForwardPaging paging?;
-    # Array of ticket objects returned in the current page.
+    # Array of ticket objects returned in the current page
     SimplePublicObjectWithAssociations[] results;
 };
 
-# Input payload specifying the two ticket records to merge.
+# Input payload specifying the two ticket records to merge
 public type PublicMergeInput record {
-    # ID of the secondary ticket to be merged into the primary.
+    # ID of the secondary ticket to be merged into the primary
     string objectIdToMerge;
-    # ID of the primary ticket that will be retained after the merge.
+    # ID of the primary ticket that will be retained after the merge
     string primaryObjectId;
 };
 
-# Defines the category and type of an association between objects.
+# Defines the category and type of an association between objects
 public type AssociationSpec record {
-    # Category of the association: HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED.
+    # Category of the association: HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED
     "HUBSPOT_DEFINED"|"USER_DEFINED"|"INTEGRATOR_DEFINED" associationCategory?;
-    # Numeric identifier for the specific association type.
+    # Numeric identifier for the specific association type
     int:Signed32 associationTypeId?;
 };
 
-# Ticket object representation including properties, associations, and audit timestamps.
+# Ticket object representation including properties, associations, and audit timestamps
 public type SimplePublicObjectWithAssociations record {
-    # Map of associated object collections keyed by association type.
+    # Map of associated object collections keyed by association type
     record {|CollectionResponseAssociatedId...;|} associations?;
-    # Timestamp indicating when the ticket was created.
+    # Timestamp indicating when the ticket was created
     string createdAt;
-    # Indicates whether the ticket has been archived.
+    # Indicates whether the ticket has been archived
     boolean archived?;
-    # Timestamp indicating when the ticket was archived.
+    # Timestamp indicating when the ticket was archived
     string archivedAt?;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # Unique identifier of the ticket object.
+    # Unique identifier of the ticket object
     string id;
-    # Map of ticket property names to their current string values.
+    # Map of ticket property names to their current string values
     record {|string?...;|} properties;
-    # Timestamp of the last update to the ticket.
+    # Timestamp of the last update to the ticket
     string updatedAt;
 };
 
-# Defines a single filter condition used to query tickets by property value and operator.
+# Defines a single filter condition used to query tickets by property value and operator
 public type Filter record {
-    # Upper bound value for BETWEEN range filter operations.
+    # Upper bound value for BETWEEN range filter operations
     string highValue?;
-    # The ticket property name to filter on.
+    # The ticket property name to filter on
     string propertyName;
-    # List of values for IN or NOT_IN filter operations.
+    # List of values for IN or NOT_IN filter operations
     string[] values?;
-    # The single value to compare against the specified property.
+    # The single value to compare against the specified property
     string value?;
-    # Comparison operator that defines how the property is evaluated against the value.
+    # Comparison operator that defines how the property is evaluated against the value
     "EQ"|"NEQ"|"LT"|"LTE"|"GT"|"GTE"|"BETWEEN"|"IN"|"NOT_IN"|"HAS_PROPERTY"|"NOT_HAS_PROPERTY"|"CONTAINS_TOKEN"|"NOT_CONTAINS_TOKEN" operator;
 };
 
-# Pagination cursor and link referencing the previous page of results.
+# Pagination cursor and link referencing the previous page of results
 public type PreviousPage record {
-    # Cursor token representing the start of the previous page.
+    # Cursor token representing the start of the previous page
     string before;
-    # URL link to retrieve the previous page of results.
+    # URL link to retrieve the previous page of results
     string link?;
 };
 
-# Wraps an array of ticket creation inputs for batch create operations.
+# Wraps an array of ticket creation inputs for batch create operations
 public type BatchInputSimplePublicObjectInputForCreate record {
-    # Array of ticket objects to create in a single batch request.
+    # Array of ticket objects to create in a single batch request
     SimplePublicObjectInputForCreate[] inputs;
 };
 
-# Wraps an array of ticket update inputs for batch update operations.
+# Wraps an array of ticket update inputs for batch update operations
 public type BatchInputSimplePublicObjectBatchInput record {
-    # Array of ticket objects to update in a single batch request.
+    # Array of ticket objects to update in a single batch request
     SimplePublicObjectBatchInput[] inputs;
 };
 
-# Represents a ticket returned from an upsert operation, indicating whether it was newly created.
+# Represents a ticket returned from an upsert operation, indicating whether it was newly created
 public type SimplePublicUpsertObject record {
-    # Timestamp when the ticket was originally created.
+    # Timestamp when the ticket was originally created
     string createdAt;
-    # Indicates whether the ticket is archived.
+    # Indicates whether the ticket is archived
     boolean archived?;
-    # Timestamp when the ticket was archived, if applicable.
+    # Timestamp when the ticket was archived, if applicable
     string archivedAt?;
-    # Indicates whether the ticket was newly created by the upsert.
+    # Indicates whether the ticket was newly created by the upsert
     boolean 'new;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # Unique identifier of the upserted ticket object.
+    # Unique identifier of the upserted ticket object
     string id;
-    # Key-value map of ticket property names and their values.
+    # Key-value map of ticket property names and their values
     record {|string...;|} properties;
-    # Timestamp when the ticket object was last updated.
+    # Timestamp when the ticket object was last updated
     string updatedAt;
 };
 
-# Input payload for updating a ticket in a batch operation, including its identifier and property values.
+# Input payload for updating a ticket in a batch operation, including its identifier and property values
 public type SimplePublicObjectBatchInput record {
-    # Name of a unique property to use as the record identifier.
+    # Name of a unique property to use as the record identifier
     string idProperty?;
-    # Trace identifier for auditing the write operation.
+    # Trace identifier for auditing the write operation
     string objectWriteTraceId?;
-    # Unique identifier of the ticket to update.
+    # Unique identifier of the ticket to update
     string id;
-    # Key-value map of ticket property names and their updated values.
+    # Key-value map of ticket property names and their updated values
     record {|string...;|} properties;
 };
 
@@ -480,34 +480,34 @@ public type PostCrmV3ObjectsTicketsBatchReadReadQueries record {
     boolean archived = false;
 };
 
-# Pagination cursor details for retrieving the next page of results.
+# Pagination cursor details for retrieving the next page of results
 public type NextPage record {
-    # URL query string to fetch the next page of results.
+    # URL query string to fetch the next page of results
     string link?;
-    # Cursor token representing the start of the next page.
+    # Cursor token representing the start of the next page
     string after;
 };
 
-# Represents an associated object reference with its identifier and association type.
+# Represents an associated object reference with its identifier and association type
 public type AssociatedId record {
-    # Unique identifier of the associated object.
+    # Unique identifier of the associated object
     string id;
-    # Type describing the nature of the association.
+    # Type describing the nature of the association
     string 'type;
 };
 
-# Provides API key configurations needed when communicating with a remote HTTP endpoint.
+# Provides API key configurations needed when communicating with a remote HTTP endpoint
 public type ApiKeysConfig record {|
     string privateAppLegacy;
     string privateApp;
 |};
 
-# Input payload for creating a new ticket, including its properties and optional associations.
+# Input payload for creating a new ticket, including its properties and optional associations
 public type SimplePublicObjectInputForCreate record {
-    # List of associations linking this ticket to other CRM objects.
+    # List of associations linking this ticket to other CRM objects
     PublicAssociationsForObject[] associations?;
-    # Trace identifier for auditing the write operation.
+    # Trace identifier for auditing the write operation
     string objectWriteTraceId?;
-    # Key-value map of ticket property names and their values.
+    # Key-value map of ticket property names and their values
     record {|string...;|} properties;
 };
